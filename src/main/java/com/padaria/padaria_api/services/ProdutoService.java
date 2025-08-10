@@ -43,4 +43,17 @@ public class ProdutoService {
         dto.setId(produto.getId());
         return dto;
     }
+
+    public void atualizar(Long id, Produto produto) {
+    ProdutoDTO dto = new ProdutoDTO();
+    dto.setId(id);
+    dto.setNome(produto.getNome());
+    dto.setPreco(produto.getPreco());
+    dto.setEstoque(produto.getEstoque());
+    dto.setCategoriaId(produto.getCategoria().getId());
+    salvar(dto);
+}
+
+    public void excluir(Long id) {
+}
 }

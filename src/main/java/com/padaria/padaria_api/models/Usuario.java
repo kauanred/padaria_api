@@ -1,10 +1,17 @@
 package com.padaria.padaria_api.models;
 
+import com.padaria.padaria_api.enums.UserEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
+import java.util.List;
+
+
+@Data
 
 @Entity
 @NoArgsConstructor
@@ -12,49 +19,25 @@ import lombok.Setter;
 @Table(name = "usuario")
 public class Usuario {
 
+//    @Enumerated(EnumType.STRING)
+//    private UserEnum userEnum;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
+    @NotBlank(message = "O nome é obrigatorio!")
+    @Size(min = 3, max = 50, message = "O nome deve ter ao menos 3 caracteres.")
     @Column(name = "nome", length = 200, nullable = true)
     private String nome;
 
+    @NotBlank(message = "O email é obrigatorio!")
     @Column(name = "email" , length = 50, nullable = true)
     private String email;
 
+    @NotBlank(message = "A senha é obrigatorio!")
     @Column(name = "senha" , columnDefinition = "TEXT", nullable = true)
     private String senha;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }

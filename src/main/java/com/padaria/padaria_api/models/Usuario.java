@@ -1,6 +1,5 @@
 package com.padaria.padaria_api.models;
 
-import com.padaria.padaria_api.enums.UserEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

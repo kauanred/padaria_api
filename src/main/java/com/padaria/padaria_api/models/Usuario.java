@@ -1,6 +1,7 @@
 package com.padaria.padaria_api.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -31,6 +32,7 @@ public class Usuario {
     @Column(name = "nome", length = 200, nullable = true)
     private String nome;
 
+    @Email(message = "O insira um email válido!")
     @NotBlank(message = "O email é obrigatorio!")
     @Column(name = "email" , length = 50, nullable = true)
     private String email;

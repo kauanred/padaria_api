@@ -1,12 +1,10 @@
 package com.padaria.padaria_api.services;
 
 
-import com.padaria.padaria_api.DTOs.ProdutoDTO;
-import com.padaria.padaria_api.models.Categoria;
 import com.padaria.padaria_api.models.Produto;
-import com.padaria.padaria_api.repositories.CategoriaRepository;
 import com.padaria.padaria_api.repositories.ProdutoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,45 +13,29 @@ import java.util.stream.Collectors;
 @Service
 public class ProdutoService {
 
-    @Autowired
     private ProdutoRepository produtoRepository;
 
-    @Autowired
-    private CategoriaRepository categoriaRepository;
-
-    public List<ProdutoDTO> listar() {
-        return produtoRepository.findAll().stream().map(p -> {
-            ProdutoDTO dto = new ProdutoDTO();
-            dto.setId(p.getId());
-            dto.setNome(p.getNome());
-            dto.setPreco(p.getPreco());
-            dto.setEstoque(p.getEstoque());
-            dto.setCategoriaId(p.getCategoria().getId());
-            return dto;
-        }).collect(Collectors.toList());
+    public ProdutoService(ProdutoRepository produtoRepository) {
+        this.produtoRepository = produtoRepository;
     }
 
-    public ProdutoDTO salvar(ProdutoDTO dto) {
-        Categoria categoria = categoriaRepository.findById(dto.getCategoriaId())
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
-
-        Produto produto = new Produto(null, dto.getNome(), dto.getPreco(), dto.getEstoque(), categoria);
-        produto = produtoRepository.save(produto);
-
-        dto.setId(produto.getId());
-        return dto;
+    public List<Produto> listarProdutos() {
+        List<Produto> lista = produtoRepository.findAll();
+        return lista;
     }
 
-    public void atualizar(Long id, Produto produto) {
-    ProdutoDTO dto = new ProdutoDTO();
-    dto.setId(id);
-    dto.setNome(produto.getNome());
-    dto.setPreco(produto.getPreco());
-    dto.setEstoque(produto.getEstoque());
-    dto.setCategoriaId(produto.getCategoria().getId());
-    salvar(dto);
-}
+    public Produto criarProduto(Produto produto) {
+        Produto produtoNovo = produtoRepository.save(produto);
+        return produtoNovo;
+    }
 
-    public void excluir(Long id) {
-}
+    public Produto editarProduto(Produto produto) {
+        Produto produtoNovo = produtoRepository.save(produto);
+        return produtoNovo;
+    }
+
+    public Boolean excluirProduto(Long id) {
+        produtoRepository.deleteById(id);
+        return true;
+    }
 }

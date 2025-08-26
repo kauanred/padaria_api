@@ -1,7 +1,7 @@
 package com.padaria.padaria_api.models;
 
+import com.padaria.padaria_api.enums.Categoria;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -25,12 +25,17 @@ public class Produto {
     @NotBlank(message = "O preço é obrigatorio!")
     private Double preco;
 
+    private String descricao;
+
     
     @NotBlank(message = "Quantidade em estoque é obrigatorio!")
     private Long estoque;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
+//    @ManyToOne
+//    @JoinColumn(name = "categoria_id")
+//    private Categoria categoria;
+
+    @Enumerated(EnumType.STRING)
     private Categoria categoria;
     
 }

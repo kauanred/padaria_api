@@ -36,7 +36,8 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> criarProduto(@Valid @RequestBody Produto produtos) {
+    public ResponseEntity<Produto> criarProduto( @RequestBody Produto produtos) {
+        System.out.println("Criando...");
         return ResponseEntity.status(201).body(produtosService.criarProduto(produtos));
     }
 

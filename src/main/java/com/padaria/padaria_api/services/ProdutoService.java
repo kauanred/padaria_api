@@ -3,8 +3,8 @@ package com.padaria.padaria_api.services;
 
 import com.padaria.padaria_api.models.Produto;
 import com.padaria.padaria_api.repositories.ProdutoRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

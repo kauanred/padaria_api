@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto - Padaria</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<!-- Cabeçalho -->
+<header>
+    <h1>🍞 Padaria Bread Nipe</h1>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="cadastrarProduto.html" class="ativo">Cadastrar Produto</a></li>
+            <li><a href="listarProdutos.html">Lista de Produtos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Conteúdo principal -->
+<main>
+    <h2>Editar Produto</h2>
+    <form id="editarProdutoForm" class="form-produto">
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" rows="3" required></textarea>
+
+        <label for="preco">Preço (R$):</label>
+        <input type="number" id="preco" name="preco" step="0.01" min="0" required>
+
+        <label for="estoque">Quantidade em estoque:</label>
+        <input type="number" id="estoque" name="estoque" min="0" required>
+
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">Selecione</option>
+            <option value="Pão">Pão</option>
+            <option value="Doce">Doce</option>
+            <option value="Salgado">Salgado</option>
+            <option value="Bebida">Bebida</option>
+        </select>
+
+        <button type="submit" class="btn-login">Salvar Alterações</button>
+    </form>
+</main>
+
+<script src="js/editarProduto.js"></script>
+</body>
+</html>

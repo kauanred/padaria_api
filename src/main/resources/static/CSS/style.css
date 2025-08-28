@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
 }
 header {
-  background: linear-gradient(90deg, #f6c28b 0%, #e9b384 100%);
+  background: linear-gradient(90deg, #fca141 0%, #e9b384 100%);
   padding: 32px 0 16px 0;
   text-align: center;
   box-shadow: 0 2px 8px rgba(200, 140, 60, 0.08);
@@ -124,4 +124,55 @@ p {
 }
 .form-produto button {
   margin-top: 10px;
+}
+
+
+/* Listagem de produtos */
+
+
+.tabela-produtos {
+  width: 90%;
+  margin: 32px auto;
+  border-collapse: collapse;
+  background: #fff7e6;
+  box-shadow: 0 2px 12px rgba(210, 105, 30, 0.10);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tabela-produtos th, .tabela-produtos td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0d9b5;
+  text-align: center;
+  color: #7c4a0a;
+}
+
+.tabela-produtos th {
+  background: #f6c28b;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.btn-acao {
+  padding: 6px 12px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.btn-acao:hover {
+  transform: scale(1.05);
+}
+
+.btn-editar {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-deletar {
+  background: #e74c3c;
+  color: white;
 }

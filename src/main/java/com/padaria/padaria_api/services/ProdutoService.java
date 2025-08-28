@@ -1,41 +1,55 @@
 package com.padaria.padaria_api.services;
 
-
 import com.padaria.padaria_api.models.Produto;
 import com.padaria.padaria_api.repositories.ProdutoRepository;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
 
-    private ProdutoRepository produtoRepository;
+    private final ProdutoRepository produtoRepository;
 
     public ProdutoService(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
+    // LISTAR TODOS
     public List<Produto> listarProdutos() {
-        List<Produto> lista = produtoRepository.findAll();
-        return lista;
+        return produtoRepository.findAll();
     }
 
+    // BUSCAR POR ID
+    public Optional<Produto> buscarProdutoPorId(Long id) {
+        return produtoRepository.findById(id);
+    }
+
+    // CRIAR PRODUTO
     public Produto criarProduto(Produto produto) {
-        Produto produtoNovo = produtoRepository.save(produto);
-        return produtoNovo;
+        return produtoRepository.save(produto);
     }
 
-    public Produto editarProduto(Produto produto) {
-        Produto produtoNovo = produtoRepository.save(produto);
-        return produtoNovo;
+    // EDITAR PRODUTO
+    public Produto editarProduto(Long id, Produto produtoAtualizado) {
+        return produtoRepository.findById(id)
+                .map(produtoExistente -> {
+                    produtoExistente.setNome(produtoAtualizado.getNome());
+                    produtoExistente.setDescricao(produtoAtualizado.getDescricao());
+                    produtoExistente.setPreco(produtoAtualizado.getPreco());
+                    produtoExistente.setEstoque(produtoAtualizado.getEstoque());
+                    produtoExistente.setCategoria(produtoAtualizado.getCategoria());
+                    return produtoRepository.save(produtoExistente);
+                }).orElse(null); // retorna null se não existir
     }
 
-    public Boolean excluirProduto(Long id) {
-        produtoRepository.deleteById(id);
-        return true;
+    // DELETAR PRODUTO
+    public boolean excluirProduto(Long id) {
+        if (produtoRepository.existsById(id)) {
+            produtoRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

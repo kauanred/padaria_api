@@ -17,10 +17,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/produtos")
+@CrossOrigin(origins = "*")
 public class ProdutoController {
-
 
     @Autowired
     private ProdutoService produtosService;
@@ -29,26 +28,45 @@ public class ProdutoController {
         this.produtosService = produtosService;
     }
 
-
+    // LISTAR TODOS
     @GetMapping
     public ResponseEntity<List<Produto>> listarProdutos() {
         return ResponseEntity.status(200).body(produtosService.listarProdutos());
     }
 
+    // BUSCAR POR ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Produto> buscarProduto(@PathVariable Long id) {
+        return produtosService.listarProdutos().stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst()
+                .map(p -> ResponseEntity.ok(p))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // CRIAR PRODUTO
     @PostMapping
-    public ResponseEntity<Produto> criarProduto( @RequestBody Produto produtos) {
-        System.out.println("Criando...");
-        return ResponseEntity.status(201).body(produtosService.criarProduto(produtos));
+    public ResponseEntity<Produto> criarProduto(@RequestBody Produto produto) {
+        Produto criado = produtosService.criarProduto(produto);
+        return ResponseEntity.status(201).body(criado);
     }
 
-    @PutMapping
-    public ResponseEntity<Produto> editarProduto(@RequestBody Produto produtos) {
-        return ResponseEntity.status(200).body(produtosService.editarProduto(produtos));
+    // ATUALIZAR PRODUTO
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> editarProduto(@PathVariable Long id,
+                                                 @RequestBody Produto produtoAtualizado) {
+        Produto atualizado = produtosService.editarProduto(id, produtoAtualizado);
+        if (atualizado != null) {
+            return ResponseEntity.ok(atualizado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
+    // DELETAR PRODUTO
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> excluirProduto(@PathVariable Long id) {
+    public ResponseEntity<Void> excluirProduto(@PathVariable Long id) {
         produtosService.excluirProduto(id);
-        return ResponseEntity.status(204).build();
+        return ResponseEntity.noContent().build();
     }
 }

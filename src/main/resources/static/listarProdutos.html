@@ -3,28 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produtos</title>
+  <title>Lista de Produtos - Padaria</title>
   <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-  <div class="listagem-produtos">
-    <h1>Produtos</h1>
-    <table id="tabela-produtos">
-  
+  <!-- Cabeçalho -->
+  <header>
+    <h1>🍞 Padaria Bread Nipe</h1>    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="cadastrarProduto.html">Cadastrar Produto</a></li>
+        <li><a href="listarProdutos.html" class="ativo">Lista de Produtos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <h2>Lista de Produtos</h2>
+    <table class="tabela-produtos">
+      <thead>
         <tr>
           <th>Nome</th>
           <th>Descrição</th>
-          <th>Preço</th>
+          <th>Preço (R$)</th>
+          <th>Estoque</th>
+          <th>Categoria</th>
           <th>Ações</th>
         </tr>
-
-      <tbody id="tbody-produtos">
-        func
-        <!-- Aqui os dados serão listados -->
+      </thead>
+      <tbody id="listaProdutos">
+        <!-- Produtos serão carregados aqui via JS -->
       </tbody>
     </table>
-  </div>
+  </main>
 
-  <script src="js/"></script>
+  <script src="js/listarProduto.js"></script>
 </body>
 </html>

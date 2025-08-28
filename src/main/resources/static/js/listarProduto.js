@@ -1,41 +1,51 @@
-// Função para listar dados
-function listarDados() {
-    // URL do controller (backend)
-    const url = 'http://localhost:8080/produtos';
-  
-    // Configuração da requisição AJAX
-    const config = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-  
-    // Envia a requisição AJAX
-    fetch(url, config)
-      .then(response => response.json())
-      .then(data => {
-        // Limpa a tabela
-        const tbody = document.getElementById('tbody-produtos');
-        tbody.innerHTML = '';
-  
-        // Lista os dados
-        data.forEach(produto => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${produto.nome}</td>
-            <td>${produto.descricao}</td>
-            <td>R$ ${produto.preco}</td>
-            <td>
-              <button>Editar</button>
-              <button>Excluir</button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
+document.addEventListener("DOMContentLoaded", carregarProdutos);
+
+function carregarProdutos() {
+  fetch("http://localhost:8080/produtos") // GET - buscar produtos do backend
+    .then(response => response.json())
+    .then(produtos => {
+      const tbody = document.getElementById("listaProdutos");
+      tbody.innerHTML = "";
+
+      produtos.forEach(produto => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+          <td>${produto.nome}</td>
+          <td>${produto.descricao}</td>
+          <td>R$ ${parseFloat(produto.preco).toFixed(2)}</td>
+          <td>${produto.estoque}</td>
+          <td>${produto.categoria}</td>
+          <td>
+            <button class="btn-acao btn-editar" onclick="editarProduto(${produto.id})">Editar</button>
+            <button class="btn-acao btn-deletar" onclick="deletarProduto(${produto.id})">Excluir</button>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(error => console.error("Erro ao carregar produtos:", error));
+}
+
+function deletarProduto(id) {
+  if (confirm("Tem certeza que deseja excluir este produto?")) {
+    fetch(`http://localhost:8080/produtos/${id}`, {
+      method: "DELETE"
+    })
+      .then(response => {
+        if (response.ok) {
+          alert("Produto excluído com sucesso!");
+          carregarProdutos(); // Atualiza a lista
+        } else {
+          alert("Erro ao excluir produto.");
+        }
       })
-      .catch(error => console.error(error));
+      .catch(error => console.error("Erro:", error));
   }
-  
-  // Chama a função para listar dados
-  listarDados();
+}
+
+function editarProduto(id) {
+  // Exemplo simples: redireciona para página de edição
+  window.location.href = `editarProduto.html?id=${id}`;
+}

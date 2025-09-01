@@ -176,3 +176,13 @@ p {
   background: #e74c3c;
   color: white;
 }
+
+.container-home {
+  max-width: 600px;          /* largura máxima */
+  margin: 48px auto;         /* centraliza no meio */
+  background: #fff7e6;       /* cor de fundo igual às outras */
+  padding: 32px 24px;        /* espaçamento interno */
+  border-radius: 18px;       /* bordas arredondadas */
+  box-shadow: 0 2px 12px rgba(210, 105, 30, 0.1); /* sombra */
+  text-align: center;
+}

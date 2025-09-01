@@ -12,10 +12,9 @@ function carregarProdutos() {
 
         tr.innerHTML = `
           <td>${produto.nome}</td>
-          <td>${produto.descricao}</td>
           <td>R$ ${parseFloat(produto.preco).toFixed(2)}</td>
           <td>${produto.estoque}</td>
-          <td>${produto.categoria}</td>
+          <td>${produto.categoria || "Sem categoria"}</td> 
           <td>
             <button class="btn-acao btn-editar" onclick="editarProduto(${produto.id})">Editar</button>
             <button class="btn-acao btn-deletar" onclick="deletarProduto(${produto.id})">Excluir</button>

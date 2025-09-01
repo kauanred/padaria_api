@@ -9,16 +9,18 @@ document.getElementById('cadastrarProduto').addEventListener('submit', function(
     });
 
     // Opção 2: Acessar cada campo individualmente
-    const nome = document.getElementById('nome').value;
-    const descricao = document.getElementById('descricao').value;
-    const preco = document.getElementById('preco').value;
-    const estoque = document.getElementById('estoque').value;
-    const categoria = document.getElementById('categoria').value;
-    const produto = { nome: nome, descricao: descricao, preco: preco, categoria: categoria };
-    console.log(produto); // Verifica os dados coletados no console
+        const produto = {
+        nome: document.getElementById('nome').value,
+        descricao: document.getElementById('descricao').value,
+        preco: parseFloat(document.getElementById('preco').value),   // transforma em número decimal
+        estoque: parseInt(document.getElementById('estoque').value), // transforma em número inteiro
+        categoria: document.getElementById('categoria').value 
+      };
 
+    
     enviarParaBackend(produto); // Chama a função que envia os dados
   });
+
 
   function enviarParaBackend(produto) {
     fetch('http://localhost:8080/produtos', { // Substitua pela URL do seu endpoint Java
@@ -28,10 +30,16 @@ document.getElementById('cadastrarProduto').addEventListener('submit', function(
       },
       body: JSON.stringify(produto) // Converte o objeto JavaScript para JSON
       })
-    .then(response => response.json()) // Processa a resposta do servidor
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro na requisição: " + response.status);
+        }
+        return response.json();
+    })
     .then(data => {
       console.log('Sucesso:', data);
-      alert('Dados enviados com sucesso!');
+      alert('Produto cadastrado com sucesso!');
+        window.location.href = "cadastrarProduto.html"; // redireciona para a listagem
     })
     .catch((error) => {
       console.error('Erro:', error);

@@ -9,7 +9,8 @@
 <body>
   <!-- Cabeçalho -->
   <header>
-    <h1>🍞 Padaria Bread Nipe</h1>    <nav>
+    <h1>🍞 Padaria Bread Nipe</h1>
+    <nav>
       <ul>
         <li><a href="home.html">Home</a></li>
         <li><a href="cadastrarProduto.html">Cadastrar Produto</a></li>
@@ -20,21 +21,23 @@
 
   <!-- Conteúdo principal -->
   <main>
-    <h2>Lista de Produtos</h2>
-    <table class="tabela-produtos">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Preço (R$)</th>
-          <th>Estoque</th>
-          <th>Categoria</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="listaProdutos">
-        <!-- Produtos serão carregados aqui via JS -->
-      </tbody>
-    </table>
+    <div class="container">
+      <h2>Lista de Produtos</h2>
+      <table class="tabela-produtos">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Preço (R$)</th>
+            <th>Estoque</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="listaProdutos">
+          <!-- Produtos serão carregados aqui via JS -->
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <script src="js/listarProduto.js"></script>

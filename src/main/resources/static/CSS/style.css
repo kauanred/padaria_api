@@ -6,7 +6,7 @@ body {
 }
 header {
   background: linear-gradient(90deg, #fca141 0%, #e9b384 100%);
-  padding: 32px 0 16px 0;
+  padding: 20px 0 16px 0;
   text-align: center;
   box-shadow: 0 2px 8px rgba(200, 140, 60, 0.08);
 }
@@ -186,3 +186,27 @@ p {
   box-shadow: 0 2px 12px rgba(210, 105, 30, 0.1); /* sombra */
   text-align: center;
 }
+
+main {
+ /*  display: flex;*/
+ justify-content: center;   /* Centraliza na horizontal */
+  align-items: flex-start; /*  Alinha do topo (troque para center se quiser no meio da tela) */
+  min-height: calc(100vh - 120px); /* Ajusta altura levando em conta header */
+  padding: 32px;
+}
+
+main-login {
+  /*  display: flex;*/
+  justify-content: center;   /* Centraliza na horizontal */
+   align-items: flex-start; /*  Alinha do topo (troque para center se quiser no meio da tela) */
+   min-height: calc(100vh - 120px); /* Ajusta altura levando em conta header */
+   padding: 32px;
+ }
+
+
+/* 
+.container {
+  width: 100%;
+  max-width: 800px;  largura máxima do conteúdo 
+  text-align: center;
+} */

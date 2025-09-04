@@ -204,9 +204,59 @@ main-login {
  }
 
 
-/* 
+/*  
 .container {
   width: 100%;
   max-width: 800px;  largura máxima do conteúdo 
   text-align: center;
-} */
+}   */
+
+
+
+/* TOAST (notificação flutuante) */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: opacity 0.8s ease; /* suavidade no fade */
+  z-index: 9999;
+}
+
+.toast.sucesso {
+  background: #d4edda;
+  color: #155724;
+  border-left: 6px solid #28a745;
+}
+.toast.erro {
+  background: #f8d7da;
+  color: #721c24;
+  border-left: 6px solid #dc3545;
+}
+
+/* FILTRO */
+.filtro-container {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.filtro-container label {
+  font-weight: bold;
+  color: #7c4a0a;
+  margin-right: 10px;
+}
+
+.filtro-container select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e9b384;
+  font-size: 1rem;
+  color: #7c4a0a;
+}

@@ -48,3 +48,69 @@ function editarProduto(id) {
   // Exemplo simples: redireciona para página de edição
   window.location.href = `editarProduto.html?id=${id}`;
 }
+
+let produtos = []; // Guardar os produtos recebidos da API
+
+// Carrega produtos ao abrir a página
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("http://localhost:8080/produtos")
+    .then(response => response.json())
+    .then(data => {
+      produtos = data;
+      renderizarTabela(produtos);
+    })
+    .catch(error => console.error("Erro ao carregar produtos:", error));
+});
+
+// Renderiza a tabela
+function renderizarTabela(lista) {
+  const tabela = document.getElementById("listaProdutos");
+  tabela.innerHTML = "";
+
+  lista.forEach(produto => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${produto.nome}</td>
+      <td>R$ ${parseFloat(produto.preco).toFixed(2)}</td>
+      <td>${produto.estoque}</td>
+      <td>${produto.categoria}</td>
+      <td>
+        <button class="btn-acao btn-editar" onclick="editarProduto(${produto.id})">Editar</button>
+        <button class="btn-acao btn-deletar" onclick="deletarProduto(${produto.id})">Deletar</button>
+      </td>
+    `;
+    tabela.appendChild(tr);
+  });
+}
+
+// Filtro por categoria
+document.getElementById("filtroCategoria").addEventListener("change", function() {
+  const categoriaSelecionada = this.value;
+
+  if (categoriaSelecionada === "Todos") {
+    renderizarTabela(produtos);
+  } else {
+    const filtrados = produtos.filter(p => p.categoria === categoriaSelecionada);
+    renderizarTabela(filtrados);
+  }
+});
+
+// Funções editar e deletar
+function editarProduto(id) {
+  window.location.href = `editarProduto.html?id=${id}`;
+}
+
+function deletarProduto(id) {
+  if (confirm("Tem certeza que deseja excluir este produto?")) {
+    fetch(`http://localhost:8080/produtos/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      alert("Produto deletado com sucesso!");
+      produtos = produtos.filter(p => p.id !== id);
+      renderizarTabela(produtos);
+    })
+    .catch(error => console.error("Erro ao deletar:", error));
+  }
+}
+

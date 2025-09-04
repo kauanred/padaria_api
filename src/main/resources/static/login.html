@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Padaria</title>
   <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
   <!-- Cabeçalho -->
   <header>
     <h1>🍞 Padaria Bread Nipe</h1>
+    <nav>
+      <ul>
+        <li><a id="toast" class="toast">Faça login para liberar ações</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Conteúdo principal -->
- <main>
+  <main>
     <div class="container">
       <h2>Login</h2>
       <form id="formLogin" class="form-produto">
@@ -25,28 +31,14 @@
 
         <button type="submit" class="btn-login">Entrar</button>
       </form>
+
       <p>Não tem conta? <a href="#">Cadastre-se</a></p>
     </div>
-</main>
+  </main>
 
-  <script>
-    document.getElementById("formLogin").addEventListener("submit", function(event) {
-      event.preventDefault();
+  <!-- Toast container -->
+  <div id="toast" class="toast"></div>
 
-      const email = document.getElementById("email").value;
-      const senha = document.getElementById("senha").value;
-
-      const usuario = { email: email, senha: senha };
-      console.log("Tentando login:", usuario);
-
-      // 🔹 Aqui futuramente você vai conectar com o backend
-      if (email === "admin@padaria.com" && senha === "123456") {
-        alert("Login realizado com sucesso!");
-        window.location.href = "home.html";
-      } else {
-        alert("E-mail ou senha inválidos!");
-      }
-    });
-  </script>
+  <script src="js/login.js"></script>
 </body>
 </html>

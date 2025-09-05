@@ -213,7 +213,7 @@ main-login {
 
 
 
-/* TOAST (notificação flutuante) */
+/* TOAST (confirmação de login) */
 .toast {
   position: fixed;
   top: 20px;
@@ -259,4 +259,68 @@ main-login {
   border: 1px solid #e9b384;
   font-size: 1rem;
   color: #7c4a0a;
+}
+
+
+.container {
+  max-width: 900px;
+  margin: 0 auto; /* centraliza */
+  text-align: center;
+}
+
+.filtro-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Container centralizado para todas as páginas */
+.container {
+  max-width: 900px;
+  margin: 0 auto; /* centraliza horizontal */
+  text-align: center;
+  padding: -20px;
+}
+
+/* ===== Modal de Confirmação ===== */
+.modal {
+  display: none; /* 🔹 começa escondido */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* fundo escuro semi-transparente */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff7e6;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 80%;
+}
+
+.modal-content h3 {
+  color: #4CAF50;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.modal-content button {
+  background: #d2691e;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-content button:hover {
+  background: #a0522d;
 }

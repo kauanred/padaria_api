@@ -21,35 +21,37 @@
 
   <!-- Conteúdo principal -->
   <main>
-    <h2>Lista de Produtos</h2>
+    <div class="container">
+      <h2>Lista de Produtos</h2>
 
-    <!-- Filtro -->
-    <div class="filtro-container">
-      <label for="filtroCategoria">Filtrar por categoria:</label>
-      <select id="filtroCategoria">
-        <option value="Todos">Todos</option>
-        <option value="Pão">Pão</option>
-        <option value="Doce">Doce</option>
-        <option value="Salgado">Salgado</option>
-        <option value="Bebida">Bebida</option>
-      </select>
+      <!-- Filtro -->
+      <div class="filtro-container">
+        <label for="filtroCategoria">Filtrar por categoria:</label>
+        <select id="filtroCategoria">
+          <option value="Todos">Todos</option>
+          <option value="Pão">Pão</option>
+          <option value="Doce">Doce</option>
+          <option value="Salgado">Salgado</option>
+          <option value="Bebida">Bebida</option>
+        </select>
+      </div>
+
+      <!-- Tabela -->
+      <table class="tabela-produtos">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Preço (R$)</th>
+            <th>Estoque</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="listaProdutos">
+          <!-- Produtos serão carregados aqui via JS -->
+        </tbody>
+      </table>
     </div>
-
-    <!-- Tabela -->
-    <table class="tabela-produtos">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Preço (R$)</th>
-          <th>Estoque</th>
-          <th>Categoria</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="listaProdutos">
-        <!-- Produtos serão carregados aqui via JS -->
-      </tbody>
-    </table>
   </main>
 
   <script src="js/listarProduto.js"></script>

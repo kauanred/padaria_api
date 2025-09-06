@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Padaria</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <h1>🍞 Padaria Bread Nipe</h1>
+    <nav>
+      <ul>
+        <li><a id="toast" class="toast">Faça login para liberar ações</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <div class="container">
+      <h2>Login</h2>
+      <form id="formLogin" class="form-produto">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+        <button type="submit" class="btn-login">Entrar</button>
+      </form>
+
+      <!-- <p>Não tem conta? <a href="#">Cadastre-se</a></p> -->
+    </div>
+  </main>
+
+  <!-- Toast container -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

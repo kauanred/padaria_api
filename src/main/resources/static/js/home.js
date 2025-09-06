@@ -5,28 +5,44 @@ const produtos = [
       preco: 1.50,
       desconto: "10% OFF",
       frete: "Frete grátis",
-      imagem: "https://via.placeholder.com/220x180?text=Pão"
+      imagem: "assets/pao-frances.jpg"
     },
     {
       nome: "Bolo de Chocolate",
       preco: 25.90,
       desconto: "15% OFF",
       frete: "Frete grátis",
-      imagem: "https://via.placeholder.com/220x180?text=Bolo"
+      imagem: "assets/bolo-de-choc.jpg"
     },
     {
-      nome: "Café Torrado",
+      nome: "Café Expresso",
       preco: 12.99,
       desconto: "5% OFF",
       frete: "Opção de frete grátis",
-      imagem: "https://via.placeholder.com/220x180?text=Café"
+      imagem: "assets/espresso-coffee.jpg"
     },
     {
       nome: "Croissant",
       preco: 4.50,
       desconto: "20% OFF",
       frete: "Frete grátis",
-      imagem: "https://via.placeholder.com/220x180?text=Croissant"
+      imagem: "assets/croissant.jpg"
+    },
+
+    {
+      nome: "Coxinha de Frango",
+      preco: 7.50,
+      desconto: "Combo com refri!",
+      frete: "Frete grátis acima de R$30",
+      imagem: "assets/coxinha.jpg"
+    },
+
+    {
+      nome: "Pudim de Leite (Fatia)",
+      preco: 9.90,
+      desconto: "Receita da vovó",
+      frete: "Opção de frete grátis",
+      imagem: "assets/pudim.jpg"
     }
   ];
   
@@ -42,8 +58,8 @@ const produtos = [
       <h3>${produto.nome}</h3>
       <div class="preco">R$ ${produto.preco.toFixed(2)}</div>
       <div class="frete">${produto.frete}</div>
-      <button>Comprar</button>
+    
     `;
     container.appendChild(card);
   });
-  
+  // linha 45  <button>Comprar</button>

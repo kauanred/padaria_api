@@ -41,4 +41,15 @@ public class Usuario {
     @Column(name = "senha" , columnDefinition = "TEXT", nullable = true)
     private String senha;
 
+    /*1- Fazer no controller o metodo de autenticação por e-mail e senha do usuario.
+
+      2- Fazer implementação do login no Service.
+
+      3- Devolver no Controller Usuario autenticado para o front.
+
+      4-No Frontend, criar rotas protegidas por autenticação e fazer o sistema iniciar na tela de login.
+
+      5-Exibir um toast, quando o usuario for autenticado com sucesso || email e senha incorretos
+     */
+
 }

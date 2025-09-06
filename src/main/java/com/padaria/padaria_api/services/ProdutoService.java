@@ -16,7 +16,7 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    // LISTAR TODOS
+    // LISTAR TODOS OS PRODUTOS
     public List<Produto> listarProdutos() {
         return produtoRepository.findAll();
     }
@@ -31,7 +31,7 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
-    // EDITAR PRODUTO
+    // EDITAR
     public Produto editarProduto(Long id, Produto produtoAtualizado) {
         return produtoRepository.findById(id)
                 .map(produtoExistente -> {
@@ -44,7 +44,7 @@ public class ProdutoService {
                 }).orElse(null); // retorna null se não existir
     }
 
-    // DELETAR PRODUTO
+    // DELETAR
     public boolean excluirProduto(Long id) {
         if (produtoRepository.existsById(id)) {
             produtoRepository.deleteById(id);

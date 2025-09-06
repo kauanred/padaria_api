@@ -1,1 +1,1 @@
-package com.padaria.padaria_api.services;
+package com.padaria.padaria_api.repositories;

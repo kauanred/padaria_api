@@ -63,3 +63,39 @@ const produtos = [
     container.appendChild(card);
   });
   // linha 45  <button>Comprar</button>
+
+async function carregarProdutos() {
+  try {
+    const response = await fetch("http://localhost:8080/produtos");
+    if (!response.ok) {
+      throw new Error("Erro ao buscar produtos");
+    }
+
+    const produtos = await response.json();
+    const container = document.getElementById("produtosContainer");
+    container.innerHTML = "";
+
+    produtos.forEach(produto => {
+      const card = document.createElement("div");
+      card.classList.add("card-produto");
+      card.innerHTML = `
+        <img src="https://via.placeholder.com/220x180?text=${produto.nome}" alt="${produto.nome}">
+        <h3>${produto.nome}</h3>
+        <div class="preco">R$ ${produto.preco.toFixed(2)}</div>
+        <div class="categoria"><strong>Categoria:</strong> ${produto.categoria}</div>
+        <p class="descricao">${produto.descricao ? produto.descricao : "Sem descrição"}</p>
+        <div class="estoque"><strong>Em estoque:</strong> ${produto.estoque}</div>
+        <button>Comprar</button>
+      `;
+      container.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("Erro:", error);
+    document.getElementById("produtosContainer").innerHTML =
+      "<p>Erro ao carregar os produtos.</p>";
+  }
+}
+
+// Carregar assim que a página abrir
+document.addEventListener("DOMContentLoaded", carregarProdutos);
